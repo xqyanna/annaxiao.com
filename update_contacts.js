@@ -54,8 +54,8 @@ const htmlToAdd = `
 <div id="contactModal" class="contact-modal-overlay" onclick="closeContactModal(event)">
   <div class="contact-modal-content font-body" onclick="event.stopPropagation()">
     <span class="contact-modal-close" onclick="closeContactModal(event)">&times;</span>
-    <div class="w-12 h-12 rounded-full bg-primary-container/30 flex items-center justify-center mx-auto mb-4">
-      <span class="text-primary text-xl">👋</span>
+    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-primary/20 mx-auto mb-4">
+      <img src="avatar.jpg" alt="Anna Xiao" class="w-full h-full object-cover">
     </div>
     <h3 class="font-headline text-2xl font-medium text-on-surface mb-2">联系我</h3>
     <p class="text-sm text-on-surface-variant mb-6">期待与你的交流</p>

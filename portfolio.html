@@ -137,7 +137,7 @@
       <a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="interests.html">爱好</a>
     </div>
     <a href="#" onclick="openContactModal(event)" class="btn-primary text-white px-7 py-2.5 rounded-full font-body font-medium text-sm">
-      Contact · 联系我
+      联系我 · Contact
     </a>
   </div>
 </nav>
@@ -180,10 +180,16 @@
 <!-- FOOTER -->
 <footer class="bg-surface-container-low py-12 px-8">
   <div class="max-w-7xl mx-auto flex flex-col items-center gap-6">
-    <div class="flex gap-8">
+        <div class="flex gap-8">
       <div class="contact-tooltip-container">
         <span class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">WeChat</span>
         <div class="contact-tooltip-content font-body">微信：X7cAnna</div>
+      </div>
+      <div class="contact-tooltip-container">
+        <span class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Email</span>
+        <div class="contact-tooltip-content font-body">邮箱：xqyanna@163.com</div>
+      </div>
+    </div>
       </div>
       <div class="contact-tooltip-container">
         <span class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Email</span>
@@ -200,8 +206,8 @@
 <div id="contactModal" class="contact-modal-overlay" onclick="closeContactModal(event)">
   <div class="contact-modal-content font-body" onclick="event.stopPropagation()">
     <span class="contact-modal-close" onclick="closeContactModal(event)">&times;</span>
-    <div class="w-12 h-12 rounded-full bg-primary-container/30 flex items-center justify-center mx-auto mb-4">
-      <span class="text-primary text-xl">👋</span>
+    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-primary/20 mx-auto mb-4">
+      <img src="avatar.jpg" alt="Anna Xiao" class="w-full h-full object-cover">
     </div>
     <h3 class="font-headline text-2xl font-medium text-on-surface mb-2">联系我</h3>
     <p class="text-sm text-on-surface-variant mb-6">期待与你的交流</p>

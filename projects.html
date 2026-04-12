@@ -79,64 +79,75 @@
 
   /* 卡片 — 杂志封面风 */
   .project-card {
-    border: 0.5px solid rgba(134,78,90,0.10);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(134,78,90,0.06);
+    transition: all 0.5s cubic-bezier(0.22, 0.68, 0, 1.2);
     cursor: pointer;
     background: #ffffff;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(134,78,90,0.04);
   }
   .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 48px rgba(134,78,90,0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(134,78,90,0.12);
+    border-color: rgba(134,78,90,0.12);
   }
 
   /* 封面图容器 */
   .card-cover {
-    height: 200px;
+    height: 220px;
     overflow: hidden;
     position: relative;
   }
   .card-cover img {
     width: 100%; height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 1.2s cubic-bezier(0.22, 0.68, 0, 1.2);
   }
   .project-card:hover .card-cover img {
-    transform: scale(1.07);
+    transform: scale(1.12);
   }
 
   /* 图片底部遮罩 + 叠加标题 */
   .card-cover-overlay {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    padding: 2rem 1rem 0.9rem;
-    background: linear-gradient(to top, rgba(20,18,18,0.82) 0%, rgba(20,18,18,0.3) 60%, transparent 100%);
+    padding: 3rem 1.25rem 1.25rem;
+    background: linear-gradient(to top, rgba(20,18,18,0.85) 0%, rgba(20,18,18,0.3) 60%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
   .card-cover-overlay .cover-title {
     font-family: "Newsreader", serif;
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     font-weight: 500;
     color: #ffffff;
-    margin: 0 0 3px;
-    line-height: 1.3;
+    margin: 0 0 4px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
   }
   .card-cover-overlay .cover-time {
-    font-size: 0.68rem;
-    color: rgba(255,255,255,0.65);
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+    letter-spacing: 0.05em;
   }
   /* 右上角角标 */
   .card-badge {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 20px;
+    right: 20px;
     z-index: 10;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    padding: 6px 14px;
+    padding: 6px 16px;
     border-radius: 9999px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    letter-spacing: 0.02em;
   }
 
   /* 分区标题线 */
@@ -164,25 +175,34 @@
   }
   .detail-panel {
     background: #ffffff;
-    border-radius: 1.5rem;
-    padding: 2.5rem;
-    max-width: 480px;
+    border-radius: 2rem;
+    padding: 3.5rem 2.5rem;
+    max-width: 520px;
     width: 100%;
     text-align: center;
     position: relative;
-    box-shadow: 0 32px 80px rgba(134,78,90,0.18);
+    box-shadow: 0 40px 100px rgba(134,78,90,0.22);
+    border: 1px solid rgba(134,78,90,0.05);
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.22, 0.68, 0, 1.2);
+  }
+  .detail-overlay.open .detail-panel {
+    transform: scale(1);
   }
   .close-btn {
     position: absolute;
-    top: 1rem; right: 1.25rem;
-    font-size: 1.4rem;
+    top: 1.5rem; right: 1.75rem;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: #f6f2ea;
+    font-size: 1.2rem;
     color: #514345;
     cursor: pointer;
-    background: none;
     border: none;
-    line-height: 1;
+    transition: all 0.2s ease;
   }
-  .close-btn:hover { color: #864e5a; }
+  .close-btn:hover { background: #ffd9df; color: #864e5a; transform: rotate(90deg); }
 
   /* 进入动画 */
   @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -245,6 +265,20 @@
   .contact-modal-close:hover { color: #864e5a; }
 
 </style>
+<script>
+  function openContactModal(e) {
+    if(e) e.preventDefault();
+    var m = document.getElementById('contactModal');
+    if (m) m.classList.add('active');
+    return false;
+  }
+  function closeContactModal(e) {
+    if(e) e.preventDefault();
+    var m = document.getElementById('contactModal');
+    if (m) m.classList.remove('active');
+    return false;
+  }
+</script>
 </head>
 <body class="bg-surface text-on-surface font-body" style="overflow-x:hidden;">
 
@@ -275,7 +309,7 @@
       <div class="sm:ml-auto flex-shrink-0" style="max-width:350px;">
         <div style="background:linear-gradient(135deg,#fff9f0,#fff0f3);border:0.5px solid rgba(134,78,90,0.18);border-radius:1rem;padding:1rem 1.25rem;position:relative;">
           <div style="position:absolute;top:-6px;left:18px;width:10px;height:10px;background:#fff9f0;border-left:0.5px solid rgba(134,78,90,0.18);border-top:0.5px solid rgba(134,78,90,0.18);transform:rotate(45deg);"></div>
-          <p class="font-body text-sm font-medium leading-relaxed" style="color:#514345;">从内容运营到市场营销，从数据新闻到文化研究——每一段经历都是一次新的思维训练。</p>
+          <p class="font-body text-sm font-medium leading-relaxed" style="color:#514345;">过往的经历，让我具备了市场思维、结果导向、数据复盘和良好的合作沟通能力。</p>
         </div>
       </div>
     </div>
@@ -378,7 +412,7 @@
     </div>
 
     <!-- ══ 项目板块 ══ -->
-    <div class="mb-6 reveal">
+    <div class="mb-12 mt-20 reveal">
       <span class="font-body text-xs font-semibold tracking-widest uppercase text-tertiary">Projects</span>
       <h2 class="font-headline text-4xl text-on-surface mt-1">项目经历</h2>
       <div class="section-divider"></div>
@@ -464,14 +498,20 @@
 <!-- FOOTER -->
 <footer class="bg-surface-container-low py-12 px-8">
   <div class="max-w-7xl mx-auto flex flex-col items-center gap-5">
-        <div class="flex gap-8">
+            <div class="flex gap-8">
       <div class="contact-tooltip-container">
         <span class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">WeChat</span>
         <div class="contact-tooltip-content font-body">微信：X7cAnna</div>
       </div>
       <div class="contact-tooltip-container">
         <span class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Email</span>
-        <div class="contact-tooltip-content font-body">邮箱：<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="51292028303f3f30116067627f323e3c">[email&#160;protected]</a></div>
+        <div class="contact-tooltip-content font-body">邮箱：xqyanna@163.com</div>
+      </div>
+    </div>
+      </div>
+      <div class="contact-tooltip-container">
+        <span class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Email</span>
+        <div class="contact-tooltip-content font-body">邮箱：xqyanna@163.com</div>
       </div>
     </div>
 
@@ -481,34 +521,92 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   const details = {
     mars: {
-      title: '玛氏 Mars · 市场营销实习',
-      desc: '负责费列罗、好时竞品深度分析报告；挖掘50+条用户反馈，提炼5大消费场景；为小红书与微博创作推广文案。详情页面建设中，敬请期待。'
+      tag: '实习',
+      company: '玛氏 Mars',
+      role: '市场营销实习',
+      period: '2025.10 — 12',
+      points: [
+        '负责费列罗、好时等竞品深度分析报告，洞察市场动态',
+        '深度挖掘 50+ 条用户反馈，提炼出 5 大核心消费场景',
+        '为小红书与微博创作推广文案，提升品牌社交声量'
+      ]
     },
     mcr: {
-      title: 'Creative Manchester · 数字化运营',
-      desc: '搭建大曼彻斯特创意健康产业地图，整合600+设施，处理700+条数据；代表团队在全英创意健康峰会面向200+人宣讲。详情页面建设中，敬请期待。'
+      tag: '实习',
+      company: 'Creative Manchester',
+      role: '数字化运营',
+      period: '2024.10 — 2025.10',
+      points: [
+        '使用 ArcGIS 搭建大曼彻斯特创意健康产业地图，整合 600+ 设施',
+        '处理 700+ 条空间数据，实现产业资源可视化呈现',
+        '代表团队在全英创意健康峰会面向 200+ 专业人士宣讲'
+      ]
     },
     yixinli: {
-      title: '壹心理 · 内容运营实习',
-      desc: '管理300W+粉丝矩阵账号，策划270+条微博内容，单篇均读1.5W+，完成60+软广文案，促进710+实际转化。详情页面建设中，敬请期待。'
+      tag: '实习',
+      company: '壹心理',
+      role: '内容运营实习',
+      period: '2023.06 — 11',
+      points: [
+        '管理 300W+ 粉丝矩阵账号，策划并发布 270+ 条微博内容',
+        '单篇内容平均阅读量达 1.5W+，显著提升账号活跃度',
+        '完成 60+ 软广文案创作，实现 710+ 实际业务转化'
+      ]
     },
     fashion: {
-      title: '《时尚的反噬》· 数据新闻',
-      desc: '快时尚环境污染交互式数据专题，自学HTML/CSS完成开发与部署。获2023大学新闻奖中文组季军、英文组亚军，澎湃新闻与南方周末全媒体实验室报道。详情页面建设中，敬请期待。'
+      tag: '项目',
+      company: '《时尚的反噬》',
+      role: '交互式数据新闻',
+      period: '2022 — 2023',
+      points: [
+        '自主完成交互式数据专题的开发与部署 (HTML/CSS/JS)',
+        '荣获 2023 大学新闻奖中文组季军、英文组亚军',
+        '获得澎湃新闻、南方周末全媒体实验室等主流媒体报道',
+        '作品链接：<a href="https://xinxin143.github.io/index.html" target="_blank" class="text-primary hover:underline font-medium">点击在线浏览 →</a>'
+      ]
     },
     yueju: {
-      title: '粤剧短视频传播研究 · 国家级项目',
-      desc: '研究粤剧在Z世代中的传播路径创新，分析100+短视频，深度访谈与编码分析，A类国家级立项，优秀结项。详情页面建设中，敬请期待。'
+      tag: '项目',
+      company: '粤剧短视频传播研究',
+      role: '国家级立项研究',
+      period: '2021 — 2022',
+      points: [
+        '深入分析 100+ 短视频样本，研究粤剧在 Z 世代中的传播路径',
+        '完成深度访谈与编码分析，探索传统文化创新传播策略',
+        '获 A 类国家级大学生创新创业训练计划立项，并以优秀结项'
+      ]
     },
   };
 
   function openDetail(key) {
     const d = details[key];
-    document.getElementById('detailTitle').textContent = d.title;
-    document.getElementById('detailDesc').textContent = d.desc;
+    const panel = document.querySelector('.detail-panel');
+    
+    let pointsHtml = d.points.map(p => `<li class="mb-2 text-left">• ${p}</li>`).join('');
+    
+    panel.innerHTML = `
+      <button class="close-btn" onclick="closeOverlay()">×</button>
+      <div class="inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4" 
+           style="background:#f6f2ea; color:#864e5a; border: 1px solid rgba(134,78,90,0.15);">
+        ${d.tag}
+      </div>
+      <h3 class="font-headline text-3xl text-on-surface mb-1">${d.company}</h3>
+      <p class="font-body text-primary font-medium text-sm mb-4">${d.role} · ${d.period}</p>
+      
+      <div class="h-px w-12 bg-outline-variant mx-auto mb-6"></div>
+      
+      <ul class="font-body text-on-surface-variant text-sm leading-relaxed mb-8 px-2">
+        ${pointsHtml}
+      </ul>
+      
+      <button onclick="closeOverlay()" class="btn-primary text-white px-10 py-3 rounded-full font-body font-medium text-sm">
+        关闭详情
+      </button>
+    `;
+    
     document.getElementById('detailOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -534,8 +632,8 @@
 <div id="contactModal" class="contact-modal-overlay" onclick="closeContactModal(event)">
   <div class="contact-modal-content font-body" onclick="event.stopPropagation()">
     <span class="contact-modal-close" onclick="closeContactModal(event)">&times;</span>
-    <div class="w-12 h-12 rounded-full bg-primary-container/30 flex items-center justify-center mx-auto mb-4">
-      <span class="text-primary text-xl">👋</span>
+    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-primary/20 mx-auto mb-4">
+      <img src="avatar.jpg" alt="Anna Xiao" class="w-full h-full object-cover">
     </div>
     <h3 class="font-headline text-2xl font-medium text-on-surface mb-2">联系我</h3>
     <p class="text-sm text-on-surface-variant mb-6">期待与你的交流</p>
@@ -546,5 +644,21 @@
       </div>
       <div class="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30 flex items-center justify-between">
         <span class="text-sm font-medium text-on-surface-variant">邮箱 Email</span>
-        <span class="text-sm text-primary font-semibold select-all"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8af2fbf3ebe4e4ebcabbbcb9a4e9e5e7">[email&#160;protected]</a></span>
-      <
+        <span class="text-sm text-primary font-semibold select-all">xqyanna@163.com</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function openContactModal(e) {
+    if(e) e.preventDefault();
+    document.getElementById('contactModal').classList.add('active');
+  }
+  function closeContactModal(e) {
+    if(e) e.preventDefault();
+    document.getElementById('contactModal').classList.remove('active');
+  }
+</script>
+
+</body>
+</html>

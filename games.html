@@ -123,6 +123,20 @@
   .contact-modal-close:hover { color: #864e5a; }
 
 </style>
+<script>
+  function openContactModal(e) {
+    if(e) e.preventDefault();
+    var m = document.getElementById('contactModal');
+    if (m) m.classList.add('active');
+    return false;
+  }
+  function closeContactModal(e) {
+    if(e) e.preventDefault();
+    var m = document.getElementById('contactModal');
+    if (m) m.classList.remove('active');
+    return false;
+  }
+</script>
 </head>
 <body class="bg-surface text-on-surface font-body" style="overflow-x:hidden;">
 
@@ -552,8 +566,8 @@
 <div id="contactModal" class="contact-modal-overlay" onclick="closeContactModal(event)">
   <div class="contact-modal-content font-body" onclick="event.stopPropagation()">
     <span class="contact-modal-close" onclick="closeContactModal(event)">&times;</span>
-    <div class="w-12 h-12 rounded-full bg-primary-container/30 flex items-center justify-center mx-auto mb-4">
-      <span class="text-primary text-xl">👋</span>
+    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-primary/20 mx-auto mb-4">
+      <img src="avatar.jpg" alt="Anna Xiao" class="w-full h-full object-cover">
     </div>
     <h3 class="font-headline text-2xl font-medium text-on-surface mb-2">联系我</h3>
     <p class="text-sm text-on-surface-variant mb-6">期待与你的交流</p>
@@ -564,12 +578,21 @@
       </div>
       <div class="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30 flex items-center justify-between">
         <span class="text-sm font-medium text-on-surface-variant">邮箱 Email</span>
-        <span class="text-sm text-primary font-semibold select-all"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3dbd2dac2cdcdc2e39295908dc0ccce">[email&#160;protected]</a></span>
+        <span class="text-sm text-primary font-semibold select-all">xqyanna@163.com</span>
       </div>
     </div>
   </div>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function openContactModal(e) {
     if(e) e.preventDefault();
-    document.g
+    document.getElementById('contactModal').classList.add('active');
+  }
+  function closeContactModal(e) {
+    if(e) e.preventDefault();
+    document.getElementById('contactModal').classList.remove('active');
+  }
+</script>
+
+</body>
+</html>

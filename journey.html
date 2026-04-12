@@ -243,6 +243,20 @@
   .contact-modal-close:hover { color: #864e5a; }
 
 </style>
+<script>
+  function openContactModal(e) {
+    if(e) e.preventDefault();
+    var m = document.getElementById('contactModal');
+    if (m) m.classList.add('active');
+    return false;
+  }
+  function closeContactModal(e) {
+    if(e) e.preventDefault();
+    var m = document.getElementById('contactModal');
+    if (m) m.classList.remove('active');
+    return false;
+  }
+</script>
 </head>
 <body class="bg-surface text-on-surface font-body" style="overflow-x:hidden;">
 
@@ -581,6 +595,22 @@
               <p class="font-body text-xs mt-1" style="color:#514345; opacity:0.65;">Competitor analysis (Ferrero, Hershey), consumer insights from 50+ social listening data points, copywriting for Xiaohongshu & Weibo.</p>
             </div>
           </div>
+
+          <!-- 关键数字成果 -->
+          <div class="border-t pt-4 mt-2 grid grid-cols-3 gap-3 text-center" style="border-color:rgba(134,78,90,0.08);">
+            <div>
+              <p class="stat-num">50+</p>
+              <p class="font-body text-[10px] text-on-surface-variant mt-1">用户反馈</p>
+            </div>
+            <div>
+              <p class="stat-num">5个</p>
+              <p class="font-body text-[10px] text-on-surface-variant mt-1">核心场景</p>
+            </div>
+            <div>
+              <p class="stat-num">2篇</p>
+              <p class="font-body text-[10px] text-on-surface-variant mt-1">分析报告</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -620,14 +650,20 @@
 <!-- FOOTER -->
 <footer class="bg-surface-container-low py-12 px-8">
   <div class="max-w-7xl mx-auto flex flex-col items-center gap-5">
-        <div class="flex gap-8">
+            <div class="flex gap-8">
       <div class="contact-tooltip-container">
         <span class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">WeChat</span>
         <div class="contact-tooltip-content font-body">微信：X7cAnna</div>
       </div>
       <div class="contact-tooltip-container">
         <span class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Email</span>
-        <div class="contact-tooltip-content font-body">邮箱：<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4f373e362e21212e0f7e797c612c2022">[email&#160;protected]</a></div>
+        <div class="contact-tooltip-content font-body">邮箱：xqyanna@163.com</div>
+      </div>
+    </div>
+      </div>
+      <div class="contact-tooltip-container">
+        <span class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors">Email</span>
+        <div class="contact-tooltip-content font-body">邮箱：xqyanna@163.com</div>
       </div>
     </div>
 
@@ -637,7 +673,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -654,8 +690,8 @@
 <div id="contactModal" class="contact-modal-overlay" onclick="closeContactModal(event)">
   <div class="contact-modal-content font-body" onclick="event.stopPropagation()">
     <span class="contact-modal-close" onclick="closeContactModal(event)">&times;</span>
-    <div class="w-12 h-12 rounded-full bg-primary-container/30 flex items-center justify-center mx-auto mb-4">
-      <span class="text-primary text-xl">👋</span>
+    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-primary/20 mx-auto mb-4">
+      <img src="avatar.jpg" alt="Anna Xiao" class="w-full h-full object-cover">
     </div>
     <h3 class="font-headline text-2xl font-medium text-on-surface mb-2">联系我</h3>
     <p class="text-sm text-on-surface-variant mb-6">期待与你的交流</p>
@@ -666,5 +702,21 @@
       </div>
       <div class="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30 flex items-center justify-between">
         <span class="text-sm font-medium text-on-surface-variant">邮箱 Email</span>
-        <span class="text-sm text-primary font-semibold select-all"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afd7ded6cec1c1ceef9e999c81ccc0c2">[email&#160;protected]</a></span>
-      </
+        <span class="text-sm text-primary font-semibold select-all">xqyanna@163.com</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function openContactModal(e) {
+    if(e) e.preventDefault();
+    document.getElementById('contactModal').classList.add('active');
+  }
+  function closeContactModal(e) {
+    if(e) e.preventDefault();
+    document.getElementById('contactModal').classList.remove('active');
+  }
+</script>
+
+</body>
+</html>
