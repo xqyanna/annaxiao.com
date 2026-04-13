@@ -6,10 +6,10 @@ const port = 8000;
 const root = process.cwd();
 
 const mimeTypes = {
-    '.html': 'text/html',
-    '.js': 'text/javascript',
-    '.css': 'text/css',
-    '.json': 'application/json',
+    '.html': 'text/html; charset=utf-8',
+    '.js': 'text/javascript; charset=utf-8',
+    '.css': 'text/css; charset=utf-8',
+    '.json': 'application/json; charset=utf-8',
     '.png': 'image/png',
     '.jpg': 'image/jpg',
     '.gif': 'image/gif',
@@ -33,7 +33,7 @@ http.createServer((req, res) => {
         if (error) {
             if (error.code == 'ENOENT') {
                 fs.readFile(path.join(root, '404.html'), (error, content) => {
-                    res.writeHead(404, { 'Content-Type': 'text/html' });
+                    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
                     res.end(content || '404 Not Found', 'utf-8');
                 });
             } else {
